@@ -19,10 +19,9 @@ public class GreenScores {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int score_id;
     private int user_id;
-    @JsonFormat(pattern = "DD/MMM/YYYY")
-    private LocalDate score_date;
+    @JsonFormat(pattern = "MMM")
+    private LocalDate score_month;
     private float score_value;
     private String feedback;
-
 
 }

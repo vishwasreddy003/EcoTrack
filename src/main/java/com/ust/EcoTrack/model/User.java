@@ -2,10 +2,14 @@ package com.ust.EcoTrack.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
-
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class User {
     @Id

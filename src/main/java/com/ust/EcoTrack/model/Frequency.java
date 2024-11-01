@@ -1,5 +1,5 @@
 package com.ust.EcoTrack.model;
 
-public enum Reminder_Frequency {
+public enum Frequency {
     DAILY, WEEKLY;
 }

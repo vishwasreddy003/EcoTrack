@@ -1,10 +1,20 @@
 package com.ust.EcoTrack.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 import java.time.LocalDate;
 
+@Entity
 public class GreenScores {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int score_id;
     private int user_id;
+    @JsonFormat(pattern = "DD/MMM/YYYY")
     private LocalDate score_date;
     private float score_value;
     private String feedback;

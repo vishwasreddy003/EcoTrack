@@ -17,7 +17,7 @@ public class TransportationLog {
     @Enumerated(EnumType.STRING)
     private TransportationMode transportation_mode;
     @Enumerated(EnumType.STRING)
-    private FuelType fuelType;
+    private FuelType fuel_type;
     private float distance_km;
     private Frequency frequency;
     private float carbon_emissions;

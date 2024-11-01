@@ -16,11 +16,7 @@ public class GreenScoreServiceImpl implements GreenScoreService{
 
     @Override
     public GreenScores saveGreenScores(GreenScores greenScores) {
-        if(!greenScoresRepository.existsById(greenScores.getScore_id())){
-            return greenScoresRepository.save(greenScores);
-        }else{
-            throw new RuntimeException("Already Exists");
-        }
+        return greenScoresRepository.save(greenScores);
     }
 
     @Override

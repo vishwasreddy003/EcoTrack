@@ -2,9 +2,12 @@ package com.ust.EcoTrack.Service;
 
 import com.ust.EcoTrack.Repository.UserRepository;
 import com.ust.EcoTrack.model.User;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
+@Service
 public class UserServiceImpl implements  UserService{
 
     private UserRepository userRepo;
@@ -28,9 +31,9 @@ public class UserServiceImpl implements  UserService{
     }
 
     @Override
-    public void deleteUser(int id, User user) {
+    public void deleteUser(int id) {
         if(!userRepo.existsById(id)){
-            userRepo.delete(user);
+            userRepo.deleteById(id);
         }else{
             throw new RuntimeException("User Does not Exist");
         }

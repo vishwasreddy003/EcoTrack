@@ -3,10 +3,13 @@ package com.ust.EcoTrack.Service;
 import com.ust.EcoTrack.Repository.EnergyConsumptionRepository;
 import com.ust.EcoTrack.model.EnergyConsumption;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
 
+
+@Service
 public class EnergyConsumptionServiceImpl implements EnergyConsumptionService{
 
     @Autowired

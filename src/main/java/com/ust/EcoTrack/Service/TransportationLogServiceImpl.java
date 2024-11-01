@@ -5,9 +5,12 @@ import com.ust.EcoTrack.model.FuelType;
 import com.ust.EcoTrack.model.TransportationLog;
 import com.ust.EcoTrack.model.TransportationMode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
+@Service
 public class TransportationLogServiceImpl implements TransportationLogService{
 
     @Autowired
@@ -28,7 +31,7 @@ public class TransportationLogServiceImpl implements TransportationLogService{
     }
 
     @Override
-    public List<TransportationLog> getUserTransportationLogByTransportMode(int userId, TransportationMode transportationMode) {
+    public List<TransportationLog> getUserTransportationLogByTransportMode(int userId, String transportationMode) {
         if(transportRepo.findByUserIdAndTransportMode(userId,transportationMode) != null || !transportRepo.findByUserIdAndTransportMode(userId,transportationMode).isEmpty()){
             return transportRepo.findByUserIdAndTransportMode(userId,transportationMode);
         }else {
@@ -37,7 +40,7 @@ public class TransportationLogServiceImpl implements TransportationLogService{
     }
 
     @Override
-    public List<TransportationLog> getUserTransportationLogByFuelType(int userId, FuelType fuelType) {
+    public List<TransportationLog> getUserTransportationLogByFuelType(int userId, String fuelType) {
         if(transportRepo.findByUserIdAndFuelType(userId,fuelType) != null || !transportRepo.findByUserIdAndFuelType(userId,fuelType).isEmpty()){
             return transportRepo.findByUserIdAndFuelType(userId,fuelType);
         }else {

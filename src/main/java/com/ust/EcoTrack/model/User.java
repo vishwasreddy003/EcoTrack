@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Size;
 
 
 @Entity
-public class Users {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int user_id;

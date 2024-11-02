@@ -4,8 +4,13 @@ import com.ust.EcoTrack.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.List;
+
 public interface UserRepository extends JpaRepository<User,Integer> {
 
-    @Query("select * from users where username=:username")
-    public User findByUsername(String username);
+
+        User findByUserName(String userName);
+
+        @Query("select u.username from eco_user u order by u.green_score")
+        public List<User> getLeaderBoard();
 }

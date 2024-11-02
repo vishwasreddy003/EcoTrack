@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "EcoUser")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

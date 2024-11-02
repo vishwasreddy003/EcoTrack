@@ -22,18 +22,18 @@ public class TransportationLogController {
         return transportationLogService.addTransportationUsage(transportationLog);
     }
 
-    @GetMapping("/${userId}")
+    @GetMapping("/{userId}")
     public List<TransportationLog> getAnalyticsOfTransportation(@PathVariable int userId){
         return transportationLogService.getUserTransportationLog(userId);
     }
 
 
-    @GetMapping("/${userId}/${mode}")
+    @GetMapping("/{userId}/{mode}")
     public List<TransportationLog> getAnalyticsOfTransportationByMode(@PathVariable int userId, @PathVariable String mode){
         return transportationLogService.getUserTransportationLogByTransportMode(userId,mode);
     }
 
-    @GetMapping("/${userId}/${type}")
+    @GetMapping("/{userId}/{type}")
     public List<TransportationLog> getAnalyticsOfTransportationByType(@PathVariable int userId, @PathVariable String type){
         return transportationLogService.getUserTransportationLogByFuelType(userId,type);
     }

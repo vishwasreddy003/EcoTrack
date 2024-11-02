@@ -15,11 +15,11 @@ public class GreenScoreController {
     private GreenScoreService greenScoreService;
 
     @PostMapping
-    public GreenScores saveOrUpdateGreenScore(GreenScores greenScores){
+    public GreenScores saveOrUpdateGreenScore(@RequestBody GreenScores greenScores){
         return greenScoreService.saveGreenScores(greenScores);
     }
 
-    @GetMapping("/analytics/${userId}")
+    @GetMapping("/analytics/{userId}")
     public List<GreenScores> getAnalyticsForGreenScores(@PathVariable int userId){
         return greenScoreService.getTrendsForGreenScores(userId);
     }

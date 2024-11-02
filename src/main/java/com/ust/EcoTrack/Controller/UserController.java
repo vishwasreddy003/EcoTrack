@@ -19,12 +19,12 @@ public class UserController {
         return userService.saveUser(user);
     }
 
-    @PutMapping("/${userId}/edit")
+    @PutMapping("/{userId}/edit")
     public User editUser(@PathVariable int userId,@RequestBody User user){
         return userService.editUser(userId,user);
     }
 
-    @DeleteMapping("/${userId}/delete")
+    @DeleteMapping("/{userId}/delete")
     public void deleteUser(@PathVariable int userId){
         userService.deleteUser(userId);
     }

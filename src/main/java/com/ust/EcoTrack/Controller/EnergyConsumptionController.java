@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping()
+@RequestMapping("/EcoTrack/energy")
 public class EnergyConsumptionController {
 
     @Autowired
@@ -16,12 +16,12 @@ public class EnergyConsumptionController {
 
 
     @PostMapping
-    public EnergyConsumption addEnergyConsumption(EnergyConsumption energyConsumption){
+    public EnergyConsumption addEnergyConsumption(@RequestBody  EnergyConsumption energyConsumption){
         return energyService.saveEnergyConsumption(energyConsumption);
     }
 
 
-    @GetMapping("/analytics/${userId}")
+    @GetMapping("/analytics/{userId}")
     public List<EnergyConsumption> getAnalytics(@PathVariable int userId){
         return energyService.getUserTrendsForEnergyConsumption(userId);
     }

@@ -31,7 +31,7 @@ public class TransportationLogServiceImpl implements TransportationLogService{
     }
 
     @Override
-    public List<TransportationLog> getUserTransportationLogByTransportMode(int userId, String transportationMode) {
+    public List<TransportationLog> getUserTransportationLogByTransportMode(int userId, TransportationMode transportationMode) {
         if(transportRepo.findByUserIdAndTransportMode(userId,transportationMode) != null || !transportRepo.findByUserIdAndTransportMode(userId,transportationMode).isEmpty()){
             return transportRepo.findByUserIdAndTransportMode(userId,transportationMode);
         }else {
@@ -40,7 +40,7 @@ public class TransportationLogServiceImpl implements TransportationLogService{
     }
 
     @Override
-    public List<TransportationLog> getUserTransportationLogByFuelType(int userId, String fuelType) {
+    public List<TransportationLog> getUserTransportationLogByFuelType(int userId, FuelType fuelType) {
         if(transportRepo.findByUserIdAndFuelType(userId,fuelType) != null || !transportRepo.findByUserIdAndFuelType(userId,fuelType).isEmpty()){
             return transportRepo.findByUserIdAndFuelType(userId,fuelType);
         }else {

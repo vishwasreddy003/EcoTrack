@@ -14,7 +14,7 @@ public class GreenScoreController {
     @Autowired
     private GreenScoreService greenScoreService;
 
-    @PostMapping
+    @PostMapping("/addScore")
     public GreenScores saveOrUpdateGreenScore(@RequestBody GreenScores greenScores){
         return greenScoreService.saveGreenScores(greenScores);
     }

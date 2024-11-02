@@ -14,7 +14,7 @@ public class WasteController {
     @Autowired
     private WasteProductionService wasteProductionService;
 
-    @PostMapping
+    @PostMapping("/addWasteData")
     public WasteProduction saveWasteData(@RequestBody WasteProduction wasteProduction){
         return wasteProductionService.saveWasteProduction(wasteProduction);
     }

@@ -15,7 +15,7 @@ public class EnergyConsumptionController {
     private EnergyConsumptionService energyService;
 
 
-    @PostMapping
+    @PostMapping("/addData")
     public EnergyConsumption addEnergyConsumption(@RequestBody  EnergyConsumption energyConsumption){
         return energyService.saveEnergyConsumption(energyConsumption);
     }

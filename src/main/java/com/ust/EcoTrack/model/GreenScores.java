@@ -10,6 +10,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.Month;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,8 +21,8 @@ public class GreenScores {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int score_id;
     private int user_id;
-    @JsonFormat(pattern = "MMM")
-    private LocalDate score_month;
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
+    private Month score_month;
     private float score_value;
     private String feedback;
 

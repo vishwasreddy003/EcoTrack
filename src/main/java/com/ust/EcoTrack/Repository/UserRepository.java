@@ -11,6 +11,6 @@ public interface UserRepository extends JpaRepository<User,Integer> {
 
         User findByUserName(String userName);
 
-        @Query("select u.username from eco_user u order by u.green_score")
-        public List<User> getLeaderBoard();
+        @Query("SELECT u FROM User u ORDER BY u.green_score DESC")
+        List<User> getLeaderBoard();
 }

@@ -13,8 +13,8 @@ public interface TransportationLogRepository extends JpaRepository<Transportatio
     List<TransportationLog> findByUserId(int userId);
 
     @Query("SELECT t FROM TransportationLog t WHERE t.user_id = :userId AND t.transportation_mode = :transportationMode")
-    List<TransportationLog> findByUserIdAndTransportMode(int userId, String transportationMode);
+    List<TransportationLog> findByUserIdAndTransportMode(int userId, TransportationMode transportationMode);
 
     @Query("SELECT t FROM TransportationLog t WHERE t.user_id = :userId AND t.fuel_type = :fuelType")
-    List<TransportationLog> findByUserIdAndFuelType(int userId, String fuelType);
+    List<TransportationLog> findByUserIdAndFuelType(int userId, FuelType fuelType);
 }

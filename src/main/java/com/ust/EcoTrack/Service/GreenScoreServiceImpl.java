@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 
 @Service
@@ -21,7 +22,7 @@ public class GreenScoreServiceImpl implements GreenScoreService{
 
     @Override
     public List<GreenScores> getTrendsForGreenScores(int id) {
-        LocalDate startDate = LocalDate.now().minusMonths(10);
+        Month startDate = LocalDate.now().minusMonths(10).getMonth();
         return greenScoresRepository.findGreenScoresFromLastTenMonths(startDate);
     }
 }

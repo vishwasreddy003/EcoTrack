@@ -11,8 +11,8 @@ public interface TransportationLogService {
 
     public List<TransportationLog> getUserTransportationLog(int useId);
 
-    public List<TransportationLog> getUserTransportationLogByTransportMode(int useId, String transportationMode);
+    public List<TransportationLog> getUserTransportationLogByTransportMode(int useId, TransportationMode transportationMode);
 
-    public List<TransportationLog> getUserTransportationLogByFuelType(int userId, String fuelType);
+    public List<TransportationLog> getUserTransportationLogByFuelType(int userId, FuelType fuelType);
 
 }

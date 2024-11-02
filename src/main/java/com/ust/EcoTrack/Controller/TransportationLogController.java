@@ -28,13 +28,13 @@ public class TransportationLogController {
     }
 
 
-    @GetMapping("/{userId}/{mode}")
-    public List<TransportationLog> getAnalyticsOfTransportationByMode(@PathVariable int userId, @PathVariable String mode){
+    @GetMapping("/type/{userId}/{mode}")
+    public List<TransportationLog> getAnalyticsOfTransportationByMode(@PathVariable int userId, @PathVariable TransportationMode mode){
         return transportationLogService.getUserTransportationLogByTransportMode(userId,mode);
     }
 
-    @GetMapping("/{userId}/{type}")
-    public List<TransportationLog> getAnalyticsOfTransportationByType(@PathVariable int userId, @PathVariable String type){
+    @GetMapping("/mode/{userId}/{type}")
+    public List<TransportationLog> getAnalyticsOfTransportationByType(@PathVariable int userId, @PathVariable FuelType type){
         return transportationLogService.getUserTransportationLogByFuelType(userId,type);
     }
 }

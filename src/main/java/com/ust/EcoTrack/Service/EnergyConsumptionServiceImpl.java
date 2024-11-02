@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 
 
@@ -27,7 +28,7 @@ public class EnergyConsumptionServiceImpl implements EnergyConsumptionService{
 
     @Override
     public List<EnergyConsumption> getUserTrendsForEnergyConsumption(int userId) {
-        LocalDate startMonth = LocalDate.now().minusMonths(10);
+        Month startMonth = LocalDate.now().minusMonths(10).getMonth();
         return energyRepo.findEnergyConsumptionOfLast10Months(startMonth);
     }
 }

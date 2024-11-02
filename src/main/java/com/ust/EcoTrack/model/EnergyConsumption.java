@@ -1,6 +1,7 @@
 package com.ust.EcoTrack.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,6 +11,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.Month;
 
 @Data
 @AllArgsConstructor
@@ -20,9 +22,9 @@ public class EnergyConsumption {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int entry_id;
     private int user_id;
-    @JsonFormat(pattern = "MMM")
-    private LocalDate month;
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
+    private Month month;
     private float electricity_units;
-    private int no_of_gas_cylinders;
+    private Float no_of_gas_cylinders;
     private float carbon_emissions;
 }

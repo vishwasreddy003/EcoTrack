@@ -7,10 +7,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 
 public interface WasteProductionRepository extends JpaRepository<WasteProduction,Integer>
  {
-  @Query("SELECT w FROM WasteProduction w WHERE w.month >= :startDate")
-  List<WasteProduction> findWasteProductionFromLastTenMonths(@Param("startDate") LocalDate startDate);
+  @Query("SELECT w FROM WasteProduction w WHERE w.month >= :startMonth")
+  List<WasteProduction> findWasteProductionFromLastTenMonths(Month startMonth);
 }

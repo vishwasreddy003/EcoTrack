@@ -3,6 +3,8 @@ package com.ust.EcoTrack.Controller;
 import com.ust.EcoTrack.Service.WasteProductionService;
 import com.ust.EcoTrack.model.WasteProduction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,14 +17,14 @@ public class WasteController {
     private WasteProductionService wasteProductionService;
 
     @PostMapping("/addWasteData")
-    public WasteProduction saveWasteData(@RequestBody WasteProduction wasteProduction){
-        return wasteProductionService.saveWasteProduction(wasteProduction);
+    public ResponseEntity<WasteProduction> saveWasteData(@RequestBody WasteProduction wasteProduction) {
+        WasteProduction savedWaste = wasteProductionService.saveWasteProduction(wasteProduction);
+        return new ResponseEntity<>(savedWaste, HttpStatus.CREATED);
     }
 
     @GetMapping("/analytics/{userId}")
-    public List<WasteProduction> getAnalyticsForWasteProduction(@PathVariable int userId){
-        return wasteProductionService.getTrendsForWasteProduction(userId);
+    public ResponseEntity<List<WasteProduction>> getAnalyticsForWasteProduction(@PathVariable int userId) {
+        List<WasteProduction> wasteTrends = wasteProductionService.getTrendsForWasteProduction(userId);
+        return new ResponseEntity<>(wasteTrends, HttpStatus.OK);
     }
-
-
 }

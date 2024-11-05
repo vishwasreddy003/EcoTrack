@@ -1,5 +1,6 @@
 package com.ust.EcoTrack.Service;
 
+import com.ust.EcoTrack.Exceptions.DataAlreadyExistsException;
 import com.ust.EcoTrack.Repository.WasteProductionRepository;
 import com.ust.EcoTrack.model.WasteProduction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class WasteProductionServiceImpl implements WasteProductionService{
             return wasteProductionRepository.save(wasteProduction);
         }
         else{
-            throw new RuntimeException("Already exists");
+            throw new DataAlreadyExistsException("Data Already exists");
         }
     }
 

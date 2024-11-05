@@ -3,6 +3,8 @@ package com.ust.EcoTrack.Controller;
 import com.ust.EcoTrack.Service.GreenScoreService;
 import com.ust.EcoTrack.model.GreenScores;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,14 +17,14 @@ public class GreenScoreController {
     private GreenScoreService greenScoreService;
 
     @PostMapping("/addScore")
-    public GreenScores saveOrUpdateGreenScore(@RequestBody GreenScores greenScores){
-        return greenScoreService.saveGreenScores(greenScores);
+    public ResponseEntity<GreenScores> saveOrUpdateGreenScore(@RequestBody GreenScores greenScores) {
+        GreenScores savedScore = greenScoreService.saveGreenScores(greenScores);
+        return new ResponseEntity<>(savedScore, HttpStatus.CREATED);
     }
 
     @GetMapping("/analytics/{userId}")
-    public List<GreenScores> getAnalyticsForGreenScores(@PathVariable int userId){
-        return greenScoreService.getTrendsForGreenScores(userId);
+    public ResponseEntity<List<GreenScores>> getAnalyticsForGreenScores(@PathVariable int userId) {
+        List<GreenScores> scoreTrends = greenScoreService.getTrendsForGreenScores(userId);
+        return new ResponseEntity<>(scoreTrends, HttpStatus.OK);
     }
-
-
 }

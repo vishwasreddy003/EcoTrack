@@ -3,6 +3,8 @@ package com.ust.EcoTrack.Controller;
 import com.ust.EcoTrack.Service.UserService;
 import com.ust.EcoTrack.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,28 +17,32 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/signup")
-    public User saveUser(@RequestBody User user){
-        return userService.saveUser(user);
+    public ResponseEntity<User> saveUser(@RequestBody User user) {
+        User savedUser = userService.saveUser(user);
+        return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
 
     @PutMapping("/{userId}/edit")
-    public User editUser(@PathVariable int userId,@RequestBody User user){
-        return userService.editUser(userId,user);
+    public ResponseEntity<User> editUser(@PathVariable int userId, @RequestBody User user) {
+        User updatedUser = userService.editUser(userId, user);
+        return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
     @DeleteMapping("/{userId}/delete")
-    public void deleteUser(@PathVariable int userId){
+    public ResponseEntity<Void> deleteUser(@PathVariable int userId) {
         userService.deleteUser(userId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @GetMapping("/user/{username}")
-    public User getUserByUsername(@PathVariable String username) {
-        return userService.getUserByUsername(username);
+    public ResponseEntity<User> getUserByUsername(@PathVariable String username) {
+        User user = userService.getUserByUsername(username);
+        return user != null ? new ResponseEntity<>(user, HttpStatus.OK) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @GetMapping("/leaderBoard")
-    public List<User> getTop10GreenScoreUsers() {
-        return userService.getTop10GreenScoreUsers();
+    public ResponseEntity<List<User>> getTop10GreenScoreUsers() {
+        List<User> leaderboard = userService.getTop10GreenScoreUsers();
+        return new ResponseEntity<>(leaderboard, HttpStatus.OK);
     }
-
 }

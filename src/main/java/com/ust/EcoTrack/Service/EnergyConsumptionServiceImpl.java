@@ -1,5 +1,6 @@
 package com.ust.EcoTrack.Service;
 
+import com.ust.EcoTrack.Exceptions.DataAlreadyExistsException;
 import com.ust.EcoTrack.Repository.EnergyConsumptionRepository;
 import com.ust.EcoTrack.model.EnergyConsumption;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class EnergyConsumptionServiceImpl implements EnergyConsumptionService{
         if(!energyRepo.existsByUserIdAndMonth(energyConsumption.getUser_id(),energyConsumption.getMonth())){
             return energyRepo.save(energyConsumption);
         }else {
-            throw new RuntimeException("This Month Data already Exists");
+            throw new DataAlreadyExistsException("This Month Data already Exists");
         }
     }
 

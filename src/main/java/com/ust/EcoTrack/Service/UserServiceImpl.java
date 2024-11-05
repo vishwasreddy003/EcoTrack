@@ -1,5 +1,7 @@
 package com.ust.EcoTrack.Service;
 
+import com.ust.EcoTrack.Exceptions.UserAlreadyExistsException;
+import com.ust.EcoTrack.Exceptions.UserDoesNotExistException;
 import com.ust.EcoTrack.Repository.UserRepository;
 import com.ust.EcoTrack.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +21,7 @@ public class UserServiceImpl implements  UserService{
         if(!userRepo.existsById(user.getUser_id())){
             return userRepo.save(user);
         }else{
-            throw new RuntimeException("User Already Exist");
+            throw new UserAlreadyExistsException("User Already Exist");
         }
     }
 
@@ -27,7 +29,7 @@ public class UserServiceImpl implements  UserService{
     public User editUser(int id, User user) {
         if (userRepo.existsById(id)) {
             User existingUser = userRepo.findById(id)
-                    .orElseThrow(() -> new RuntimeException("User Does not Exist"));
+                    .orElseThrow(() -> new UserDoesNotExistException("User Does not Exist"));
 
             existingUser.setUserName(user.getUserName());
             existingUser.setEmail(user.getEmail());
@@ -37,7 +39,7 @@ public class UserServiceImpl implements  UserService{
 
             return userRepo.save(existingUser);
         } else {
-            throw new RuntimeException("User Does not Exist");
+            throw new UserDoesNotExistException("User Does not Exist");
         }
     }
 
@@ -47,7 +49,7 @@ public class UserServiceImpl implements  UserService{
         if(userRepo.existsById(id)){
             userRepo.deleteById(id);
         }else{
-            throw new RuntimeException("User Does not Exist");
+            throw new UserDoesNotExistException("User Does not Exist");
         }
     }
 

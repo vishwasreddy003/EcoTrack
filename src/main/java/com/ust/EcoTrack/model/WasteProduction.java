@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.Month;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -15,8 +16,8 @@ import java.time.Month;
 public class WasteProduction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int waste_id;
-    private int user_id;
+    private UUID waste_id;
+    private UUID user_id;
     @JsonFormat(shape = JsonFormat.Shape.STRING)
     private Month month;
     @Enumerated(EnumType.STRING)

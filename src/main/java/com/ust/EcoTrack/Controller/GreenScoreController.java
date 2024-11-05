@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/EcoTrack/greenscore")
@@ -22,9 +23,9 @@ public class GreenScoreController {
         return new ResponseEntity<>(savedScore, HttpStatus.CREATED);
     }
 
-    @GetMapping("/analytics/{userId}")
-    public ResponseEntity<List<GreenScores>> getAnalyticsForGreenScores(@PathVariable int userId) {
-        List<GreenScores> scoreTrends = greenScoreService.getTrendsForGreenScores(userId);
+    @GetMapping("/analytics/{username}")
+    public ResponseEntity<List<GreenScores>> getAnalyticsForGreenScores(@PathVariable String username) {
+        List<GreenScores> scoreTrends = greenScoreService.getTrendsForGreenScores(username);
         return new ResponseEntity<>(scoreTrends, HttpStatus.OK);
     }
 }

@@ -9,9 +9,10 @@ import org.springframework.data.repository.query.Param;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
+import java.util.UUID;
 
-public interface WasteProductionRepository extends JpaRepository<WasteProduction,Integer>
+public interface WasteProductionRepository extends JpaRepository<WasteProduction, UUID>
  {
-  @Query("SELECT w FROM WasteProduction w WHERE w.month >= :startMonth")
-  List<WasteProduction> findWasteProductionFromLastTenMonths(Month startMonth);
+  @Query("SELECT w FROM WasteProduction w WHERE w.user_id = :userId AND w.month >= :startMonth")
+  List<WasteProduction> findWasteProductionFromLastTenMonths(UUID userId,Month startMonth);
 }

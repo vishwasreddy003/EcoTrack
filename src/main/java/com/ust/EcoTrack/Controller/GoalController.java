@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/EcoTrack/goals")
@@ -43,7 +44,7 @@ public class GoalController {
 
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteGoal(@PathVariable int  goalId) {
+    public ResponseEntity<String> deleteGoal(@PathVariable UUID goalId) {
         goalService.deleteGoal(goalId);
         return new ResponseEntity<>("Goal deleted successfully", HttpStatus.OK);
     }

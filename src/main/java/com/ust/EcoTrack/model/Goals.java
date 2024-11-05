@@ -7,6 +7,7 @@ import lombok.Data;
 
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
 
 
 @Entity
@@ -16,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class Goals{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public int goal_id;
+    public UUID goal_id;
 
     public String goal_title;
     public String goal_description;

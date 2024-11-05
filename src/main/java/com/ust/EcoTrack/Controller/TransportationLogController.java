@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/EcoTrack/transportation")
@@ -24,21 +25,21 @@ public class TransportationLogController {
         return new ResponseEntity<>(savedLog, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{userId}")
-    public ResponseEntity<List<TransportationLog>> getAnalyticsOfTransportation(@PathVariable int userId) {
-        List<TransportationLog> logs = transportationLogService.getUserTransportationLog(userId);
+    @GetMapping("/{username}")
+    public ResponseEntity<List<TransportationLog>> getAnalyticsOfTransportation(@PathVariable String username) {
+        List<TransportationLog> logs = transportationLogService.getUserTransportationLog(username);
         return new ResponseEntity<>(logs, HttpStatus.OK);
     }
 
-    @GetMapping("/type/{userId}/{mode}")
-    public ResponseEntity<List<TransportationLog>> getAnalyticsOfTransportationByMode(@PathVariable int userId, @PathVariable TransportationMode mode) {
-        List<TransportationLog> logsByMode = transportationLogService.getUserTransportationLogByTransportMode(userId, mode);
+    @GetMapping("/type/{username}/{mode}")
+    public ResponseEntity<List<TransportationLog>> getAnalyticsOfTransportationByMode(@PathVariable String username, @PathVariable TransportationMode mode) {
+        List<TransportationLog> logsByMode = transportationLogService.getUserTransportationLogByTransportMode(username, mode);
         return new ResponseEntity<>(logsByMode, HttpStatus.OK);
     }
 
     @GetMapping("/mode/{userId}/{type}")
-    public ResponseEntity<List<TransportationLog>> getAnalyticsOfTransportationByType(@PathVariable int userId, @PathVariable FuelType type) {
-        List<TransportationLog> logsByType = transportationLogService.getUserTransportationLogByFuelType(userId, type);
+    public ResponseEntity<List<TransportationLog>> getAnalyticsOfTransportationByType(@PathVariable String username, @PathVariable FuelType type) {
+        List<TransportationLog> logsByType = transportationLogService.getUserTransportationLogByFuelType(username, type);
         return new ResponseEntity<>(logsByType, HttpStatus.OK);
     }
 }

@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -19,8 +20,8 @@ import java.time.Month;
 public class EnergyConsumption {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int entry_id;
-    private int user_id;
+    private UUID entry_id;
+    private UUID user_id;
     @JsonFormat(shape = JsonFormat.Shape.STRING)
     private Month month;
     private float electricity_units;

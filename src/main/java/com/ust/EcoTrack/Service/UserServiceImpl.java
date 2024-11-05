@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 
 @Service
@@ -16,21 +17,20 @@ public class UserServiceImpl implements  UserService{
     @Autowired
     private UserRepository userRepo;
 
+
     @Override
     public User saveUser(User user) {
-        if(!userRepo.existsById(user.getUser_id())){
+        if(!userRepo.existsByUserName(user.getUserName())){
             return userRepo.save(user);
         }else{
-            throw new UserAlreadyExistsException("User Already Exist");
+            throw new UserAlreadyExistsException("User with username Already Exist");
         }
     }
 
     @Override
-    public User editUser(int id, User user) {
-        if (userRepo.existsById(id)) {
-            User existingUser = userRepo.findById(id)
-                    .orElseThrow(() -> new UserDoesNotExistException("User Does not Exist"));
-
+    public User editUser(String username, User user) {
+        if (userRepo.existsByUserName(username)) {
+            User existingUser = userRepo.findByUserName(username);
             existingUser.setUserName(user.getUserName());
             existingUser.setEmail(user.getEmail());
             existingUser.setPassword(user.getPassword());
@@ -45,9 +45,10 @@ public class UserServiceImpl implements  UserService{
 
 
     @Override
-    public void deleteUser(int id) {
-        if(userRepo.existsById(id)){
-            userRepo.deleteById(id);
+    public void deleteUser(String username) {
+
+        if(userRepo.existsByUserName(username)){
+            userRepo.deleteByUsername(username);
         }else{
             throw new UserDoesNotExistException("User Does not Exist");
         }
@@ -55,7 +56,6 @@ public class UserServiceImpl implements  UserService{
 
     @Override
     public User getUserByUsername(String username) {
-
         return userRepo.findByUserName(username);
     }
 

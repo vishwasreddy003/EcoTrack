@@ -4,6 +4,7 @@ import com.ust.EcoTrack.model.Difficulty;
 import com.ust.EcoTrack.model.Goals;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface GoalService {
     public Goals addGoal(Goals goal);
@@ -12,6 +13,6 @@ public interface GoalService {
 
     public List<Goals> getGoalsByDifficulty(Difficulty difficulty);
 
-    public void deleteGoal(int goalId);
+    public void deleteGoal(UUID goalId);
 
 }

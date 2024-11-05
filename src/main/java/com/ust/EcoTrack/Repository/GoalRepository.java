@@ -7,8 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.UUID;
 
-public interface GoalRepository extends JpaRepository<Goals, Integer> {
+public interface GoalRepository extends JpaRepository<Goals, UUID> {
 
 
     @Query("SELECT g FROM Goals g WHERE g.goal_difficulty = :difficulty")

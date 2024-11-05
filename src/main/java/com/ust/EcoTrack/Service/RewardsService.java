@@ -3,12 +3,13 @@ package com.ust.EcoTrack.Service;
 import com.ust.EcoTrack.model.Rewards;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface RewardsService {
 
     public Rewards addReward(Rewards reward);
 
-    public void deleteReward(int rewardId);
+    public void deleteReward(UUID rewardId);
 
     public List<Rewards> getAllRewards();
 

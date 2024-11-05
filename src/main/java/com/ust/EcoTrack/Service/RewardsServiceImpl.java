@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class RewardsServiceImpl implements RewardsService {
@@ -23,7 +24,7 @@ public class RewardsServiceImpl implements RewardsService {
     }
 
     @Override
-    public void deleteReward(int rewardId) {
+    public void deleteReward(UUID rewardId) {
 
         if(rewardRepository.existsById(rewardId)){
             rewardRepository.deleteById(rewardId);

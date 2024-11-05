@@ -7,14 +7,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.UUID;
 
-public interface TransportationLogRepository extends JpaRepository<TransportationLog,Integer> {
+public interface TransportationLogRepository extends JpaRepository<TransportationLog, UUID> {
     @Query("SELECT t FROM TransportationLog t WHERE t.user_id = :userId")
-    List<TransportationLog> findByUserId(int userId);
+    List<TransportationLog> findByUserId(UUID userId);
 
     @Query("SELECT t FROM TransportationLog t WHERE t.user_id = :userId AND t.transportation_mode = :transportationMode")
-    List<TransportationLog> findByUserIdAndTransportMode(int userId, TransportationMode transportationMode);
+    List<TransportationLog> findByUserIdAndTransportMode(UUID userId, TransportationMode transportationMode);
 
     @Query("SELECT t FROM TransportationLog t WHERE t.user_id = :userId AND t.fuel_type = :fuelType")
-    List<TransportationLog> findByUserIdAndFuelType(int userId, FuelType fuelType);
+    List<TransportationLog> findByUserIdAndFuelType(UUID userId, FuelType fuelType);
 }

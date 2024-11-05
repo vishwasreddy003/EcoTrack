@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/EcoTrack/WasteProduction")
@@ -22,9 +23,9 @@ public class WasteController {
         return new ResponseEntity<>(savedWaste, HttpStatus.CREATED);
     }
 
-    @GetMapping("/analytics/{userId}")
-    public ResponseEntity<List<WasteProduction>> getAnalyticsForWasteProduction(@PathVariable int userId) {
-        List<WasteProduction> wasteTrends = wasteProductionService.getTrendsForWasteProduction(userId);
+    @GetMapping("/analytics/{username}")
+    public ResponseEntity<List<WasteProduction>> getAnalyticsForWasteProduction(@PathVariable String username) {
+        List<WasteProduction> wasteTrends = wasteProductionService.getTrendsForWasteProduction(username);
         return new ResponseEntity<>(wasteTrends, HttpStatus.OK);
     }
 }

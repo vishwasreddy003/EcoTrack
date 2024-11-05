@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Data
 @Entity
 @AllArgsConstructor
@@ -15,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class Rewards {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int rewardId;
+    private UUID rewardId;
     private String reward_title;
     private String brand_name;
     private int redeem_cost;

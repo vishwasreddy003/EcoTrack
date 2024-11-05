@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/EcoTrack/rewards")
@@ -23,7 +24,7 @@ public class RewardsController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteReward(@PathVariable int rewardId) {
+    public ResponseEntity<String> deleteReward(@PathVariable UUID rewardId) {
         rewardsService.deleteReward(rewardId);
         return new ResponseEntity<>("Reward deleted successfully", HttpStatus.OK);
     }

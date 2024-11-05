@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -12,8 +14,8 @@ import lombok.NoArgsConstructor;
 public class TransportationLog {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int log_id;
-    private int user_id;
+    private UUID log_id;
+    private UUID user_id;
     @Enumerated(EnumType.STRING)
     private TransportationMode transportation_mode;
     @Enumerated(EnumType.STRING)

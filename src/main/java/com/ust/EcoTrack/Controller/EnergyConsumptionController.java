@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/EcoTrack/energy")
@@ -22,9 +23,9 @@ public class EnergyConsumptionController {
         return new ResponseEntity<>(savedData, HttpStatus.CREATED);
     }
 
-    @GetMapping("/analytics/{userId}")
-    public ResponseEntity<List<EnergyConsumption>> getAnalytics(@PathVariable int userId) {
-        List<EnergyConsumption> analytics = energyService.getUserTrendsForEnergyConsumption(userId);
+    @GetMapping("/analytics/{username}")
+    public ResponseEntity<List<EnergyConsumption>> getAnalytics(@PathVariable String username) {
+        List<EnergyConsumption> analytics = energyService.getUserTrendsForEnergyConsumption(username);
         return new ResponseEntity<>(analytics, HttpStatus.OK);
     }
 }

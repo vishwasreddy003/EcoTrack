@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/EcoTrack")
@@ -22,15 +23,15 @@ public class UserController {
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{userId}/edit")
-    public ResponseEntity<User> editUser(@PathVariable int userId, @RequestBody User user) {
-        User updatedUser = userService.editUser(userId, user);
+    @PutMapping("/{username}/edit")
+    public ResponseEntity<User> editUser(@PathVariable String username, @RequestBody User user) {
+        User updatedUser = userService.editUser(username, user);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{userId}/delete")
-    public ResponseEntity<Void> deleteUser(@PathVariable int userId) {
-        userService.deleteUser(userId);
+    @DeleteMapping("/{username}/delete")
+    public ResponseEntity<Void> deleteUser(@PathVariable String username) {
+        userService.deleteUser(username);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 

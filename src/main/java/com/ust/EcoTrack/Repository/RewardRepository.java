@@ -7,8 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.UUID;
 
-public interface RewardRepository extends JpaRepository<Rewards, Integer> {
+public interface RewardRepository extends JpaRepository<Rewards, UUID> {
 
     @Query("SELECT r FROM Rewards r WHERE r.redeem_cost < :price")
     List<Rewards> findRewardsLessThanPrice(int price);

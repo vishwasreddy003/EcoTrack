@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -19,8 +20,8 @@ import java.time.Month;
 public class GreenScores {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int score_id;
-    private int user_id;
+    private UUID score_id;
+    private UUID user_id;
     @JsonFormat(shape = JsonFormat.Shape.STRING)
     private Month score_month;
     private float score_value;

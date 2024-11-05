@@ -4,11 +4,12 @@ import com.ust.EcoTrack.model.GreenScores;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public interface GreenScoreService {
 
     GreenScores saveGreenScores(GreenScores greenScores);
 
-    List<GreenScores> getTrendsForGreenScores(int id);
+    List<GreenScores> getTrendsForGreenScores(String username);
 
 }

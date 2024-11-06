@@ -4,8 +4,9 @@ import com.ust.EcoTrack.model.FuelType;
 import com.ust.EcoTrack.model.TransportationLog;
 import com.ust.EcoTrack.model.TransportationMode;
 
+import java.time.Month;
 import java.util.List;
-import java.util.UUID;
+import java.util.Map;
 
 public interface TransportationLogService {
     public TransportationLog addTransportationUsage(TransportationLog transportationLog);
@@ -16,4 +17,5 @@ public interface TransportationLogService {
 
     public List<TransportationLog> getUserTransportationLogByFuelType(String username, FuelType fuelType);
 
+    public Map<Month,Float> getTrendsForTransportation(String username);
 }

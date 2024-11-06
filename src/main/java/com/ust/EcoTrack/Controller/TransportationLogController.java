@@ -9,7 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Month;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -42,4 +44,11 @@ public class TransportationLogController {
         List<TransportationLog> logsByType = transportationLogService.getUserTransportationLogByFuelType(username, type);
         return new ResponseEntity<>(logsByType, HttpStatus.OK);
     }
+
+    @GetMapping("/emissions/{username}")
+    public ResponseEntity<Map<Month, Float>> getUserMonthlyCarbonEmissions(@PathVariable String username) {
+        Map<Month, Float> emissions = transportationLogService.getTrendsForTransportation(username);
+        return ResponseEntity.ok(emissions);
+    }
+
 }

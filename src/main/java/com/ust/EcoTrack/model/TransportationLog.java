@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.Month;
 import java.util.UUID;
 
 @Data
@@ -23,5 +24,6 @@ public class TransportationLog {
     private float distance_km;
     @Enumerated(EnumType.STRING)
     private Frequency frequency;
+    private Month month;
     private float carbon_emissions;
 }

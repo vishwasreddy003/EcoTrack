@@ -18,4 +18,8 @@ public interface TransportationLogRepository extends JpaRepository<Transportatio
 
     @Query("SELECT t FROM TransportationLog t WHERE t.user_id = :userId AND t.fuel_type = :fuelType")
     List<TransportationLog> findByUserIdAndFuelType(UUID userId, FuelType fuelType);
+
+    @Query("SELECT t.month, SUM(t.carbon_emissions) FROM TransportationLog t WHERE t.user_id = :userId GROUP BY t.month")
+    List<Object[]> findMonthlyCarbonEmissionsByUserId(UUID userId);
+
 }

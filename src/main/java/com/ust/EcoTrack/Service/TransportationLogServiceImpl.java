@@ -10,7 +10,10 @@ import com.ust.EcoTrack.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Month;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 
@@ -62,4 +65,21 @@ public class TransportationLogServiceImpl implements TransportationLogService{
             throw new DataNotFoundException("No Data to show Trends");
         }
     }
+    public Map<Month, Float> getTrendsForTransportation(String username) {
+        User user = userRepo.findByUserName(username);
+        UUID userId = user.getUser_id();
+
+        List<Object[]> results = transportRepo.findMonthlyCarbonEmissionsByUserId(userId);
+        Map<Month, Float> monthlyEmissions = new HashMap<>();
+
+        for (Object[] result : results) {
+            Month month = (Month) result[0];
+            Float emissions = (Float) result[1];
+            monthlyEmissions.put(month, emissions);
+        }
+
+        return monthlyEmissions;
+    }
+
+
 }
